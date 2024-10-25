@@ -1,0 +1,5 @@
+https://react.dev/learn/start-a-new-react-project
+
+npx create-react-app chuong-01
+    cd chuong-01
+    npm start
