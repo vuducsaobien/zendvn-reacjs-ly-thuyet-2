@@ -1,4 +1,4 @@
-
+import Lesson from './Lesson';
 
 function Course() {
   return (
@@ -9,12 +9,11 @@ function Course() {
             </div>
             <div className="panel-body">
                 <ul className="list-group">
-                <li className="list-group-item">Text</li>
-                <li className="list-group-item">Text</li>
-                <li className="list-group-item">Text</li>
+                    <Lesson />
                 </ul>
             </div>
         </div>
+        {/* <button  className="btn btn-success" type="button">Register</button> */}
     </div>
   );
 }
