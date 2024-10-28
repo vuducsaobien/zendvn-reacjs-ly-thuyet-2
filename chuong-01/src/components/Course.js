@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useState } from 'react';
 import Lesson from './Lesson';
 
 function handleClick1() {
@@ -59,6 +60,24 @@ function Course(props) {
     // Capture props in a closure
     const { name, time, free, children } = props;
 
+    // Set States
+    const [isShowOutline, setIsShowOutline] = useState(false);
+
+    function handleToogleOutline() {
+        setIsShowOutline(!isShowOutline);
+    }
+    
+    console.log('render');
+
+    let eleOutline = null;
+    if (isShowOutline) {
+        eleOutline = (
+            <ul className="list-group">
+                <Lesson />
+                <Lesson />
+            </ul>
+        );
+    }
 
   return (
     <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -69,12 +88,8 @@ function Course(props) {
             <div className="panel-body">
                 <p>{time}</p>
                 <p>{children}</p>
-
-                <ul className="list-group">
-                    <Lesson />
-                    <Lesson />
-
-                </ul>
+                <p><button onClick={handleToogleOutline} className="btn btn-success" type="button">Toogle Outline</button></p>
+                {eleOutline}
             </div>
 
             {/* Method 1 */}
