@@ -1,9 +1,29 @@
 import Lesson from './Lesson';
 
+function handleClick1() {
+    alert('view 11');
+}
+
+function handleClick2(content) {
+    alert(content);
+}
+
+function handleClick3(props) {
+    alert(props.name);
+}
+
 /* Method 3 */
-function showButtonFree(free) {
+function showButtonFree(free, props) {
     if (free) {
-        return <button className="btn btn-warning" type="button">View</button>;
+        // return <button className="btn btn-warning" type="button">View</button>;
+        return <div className="panel-footer">
+                    <div className="btn-group">
+                        <button onClick={handleClick1}                      className="btn btn-warning" type="button">View 1</button>
+                        <button onClick={() => handleClick2('view 2 2')}    className="btn btn-danger" type="button">View 2</button>
+                        <button onClick={() => handleClick3(props)}         className="btn btn-success" type="button">View 3</button>
+                    </div>
+                </div>;
+        
     }
 }
 
@@ -26,6 +46,8 @@ function Course(props) {
 
                 <ul className="list-group">
                     <Lesson />
+                    <Lesson />
+
                 </ul>
             </div>
 
@@ -40,7 +62,7 @@ function Course(props) {
             {/* {showButtonFree()} */}
 
             {/* Method 3 */}
-            {showButtonFree(props.free)}
+            {showButtonFree(props.free, props)}
 
         </div>
     </div>
