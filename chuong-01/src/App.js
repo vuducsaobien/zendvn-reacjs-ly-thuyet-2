@@ -1,6 +1,8 @@
 // import logo from './logo.svg';
 import './App.css';
 import Course from './components/Course';
+import State from './hooks/State';
+
 
 function App() {
   const items = [
@@ -22,13 +24,14 @@ function App() {
         }
     ];
 
-    const eleItem = items.map((item, index) => {
+    let eleItem = items.map((item, index) => {
         // console.log(item);
         // console.log('items = ');
 
         return <Course key={index} name={item.name} time={item.time} free={item.free}>{item.desc}</Course>
     });
 
+    eleItem = null;
     // console.log(items);
     // console.log('items = ');
 
@@ -38,7 +41,9 @@ function App() {
         <Course name='Angular 4x' time='55h' free={false}/>
         <Course name='Node JS' time='35h' free={false}/> */}
 
+
         {eleItem}
+        <State/>
     </div>
 
   );
