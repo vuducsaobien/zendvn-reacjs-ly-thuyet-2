@@ -1,51 +1,5 @@
-import React, { useRef } from 'react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Lesson from './Lesson';
-
-function handleClick1() {
-    alert('view 11');
-}
-
-function handleClick2(content) {
-    alert(content);
-}
-
-function handleClick3(props) {
-    alert(props.name);
-}
-
-// function registerCourse(refs) {
-    // alert(refs.current.value);
-// }
-
-function registerCourse(username) {
-    alert(username);
-}
-
-
-/* Method 3 */
-function showButtonFree(free, props, usernameRef) {
-    if (free) {
-        // return <button className="btn btn-warning" type="button">View</button>;
-        return (
-            <div className="btn-group">
-                <button onClick={handleClick1}                      className="btn btn-warning" type="button">View 1</button>
-                <button onClick={() => handleClick2('view 2 2')}    className="btn btn-danger" type="button">View 2</button>
-                <button onClick={() => handleClick3(props)}         className="btn btn-success" type="button">View 3</button>
-            </div>
-        );
-        
-    } else {
-        return (
-            <div className="input-group">
-                <input type="text" className="form-control" placeholder="Username..." ref={usernameRef}/>
-                <span className="input-group-btn">
-                    <button onClick={() => registerCourse(usernameRef.current.value)} className="btn btn-info" type="button">Go!</button>
-                </span>
-            </div>
-        );
-    }
-}
 
 function Course(props) {
 
@@ -62,13 +16,52 @@ function Course(props) {
 
     // Set States
     const [isShowOutline, setIsShowOutline] = useState(false);
+    const [totalStudent, setTotalStudent] = useState(68);
+
 
     function handleToogleOutline() {
         setIsShowOutline(!isShowOutline);
     }
-    
-    console.log('render');
 
+    function handleClick1() {
+        alert('view 11');
+    }
+    
+    function handleClick2(content) {
+        alert(content);
+    }
+    
+    function handleClick3() {
+        alert(name);
+    }
+    
+    function registerCourse(ref) {
+        console.log(ref);
+        alert(ref.current.value);
+    }
+
+    /* Method 3 */
+    function showButtonFree(usernameRef) {
+        if (free) {
+            return (
+                <div className="btn-group">
+                    <button onClick={handleClick1}                      className="btn btn-warning" type="button">View 1</button>
+                    <button onClick={() => handleClick2('view 2 2')}    className="btn btn-danger" type="button">View 2</button>
+                    <button onClick={handleClick3}                      className="btn btn-success" type="button">View 3</button>
+                </div>
+            );
+        } else {
+            return (
+                <div className="input-group">
+                    <input type="text" className="form-control" placeholder="Username..." ref={usernameRef}/>
+                    <span className="input-group-btn">
+                        <button onClick={() => registerCourse(usernameRef)} className="btn btn-info" type="button">Go!</button>
+                    </span>
+                </div>
+            );
+        }
+    }
+    
     let eleOutline = null;
     if (isShowOutline) {
         eleOutline = (
@@ -104,7 +97,7 @@ function Course(props) {
 
             {/* Method 3 */}
             <div className="panel-footer">
-                {showButtonFree(free, props, usernameRef)}
+                {showButtonFree(usernameRef)}
             </div>
         </div>
     </div>

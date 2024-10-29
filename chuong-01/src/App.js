@@ -1,11 +1,32 @@
 // import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 import Course from './components/Course';
-import State from './hooks/State';
+// import State from './hooks/State';
 
 
 function App() {
-  const items = [
+    // const items = [
+    //     {
+    //         name: 'ReacjJS',
+    //         time: '30h',
+    //         free: true,
+    //         desc: 'ReacjJS is very simple'
+    //     },
+    //     {
+    //         name: 'Angular 4x',
+    //         time: '55h',
+    //         free: false
+    //     },
+    //     {
+    //         name: 'Node JS',
+    //         time: '35h',
+    //         free: true
+    //     }
+    // ];
+
+    // const [items, setItems] = useState([
+    const [items] = useState([
         {
             name: 'ReacjJS',
             time: '30h',
@@ -22,7 +43,7 @@ function App() {
             time: '35h',
             free: true
         }
-    ];
+    ]);
 
     let eleItem = items.map((item, index) => {
         // console.log(item);
@@ -31,7 +52,7 @@ function App() {
         return <Course key={index} name={item.name} time={item.time} free={item.free}>{item.desc}</Course>
     });
 
-    eleItem = null;
+    // eleItem = null;
     // console.log(items);
     // console.log('items = ');
 
@@ -42,8 +63,11 @@ function App() {
         <Course name='Node JS' time='35h' free={false}/> */}
 
 
-        {eleItem}
-        <State fullName = "Nguyen Van A" age={23}/>
+        {eleItem} {/* Hook, turn on or Off */}
+
+
+        {/* <State fullName = "Nguyen Van A" age={23}/>  */}
+        {/* Hook detail - Life Cycle */}
     </div>
 
   );
