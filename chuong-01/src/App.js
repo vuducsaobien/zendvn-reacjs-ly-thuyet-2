@@ -43,7 +43,7 @@ function App() {
 
 
         {eleItem}
-        <State/>
+        <State fullName = "Nguyen Van A" age={23}/>
     </div>
 
   );
