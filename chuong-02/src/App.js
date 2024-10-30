@@ -1,4 +1,4 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 
 import Control from "./components/Control";
 import Form from "./components/Form";
@@ -6,6 +6,22 @@ import List from "./components/List";
 import Title from "./components/Title";
 
 function App() {
+
+    const [items] = useState([
+        {
+            name: 'A',
+            level: 0
+        },
+        {
+            name: 'B',
+            level: 1
+        },
+        {
+            name: 'C',
+            level: 2
+        }
+    ]);
+
   return (
     <div>
         {/* TITLE : START */}
@@ -21,7 +37,7 @@ function App() {
         {/* FORM : END */}
 
         {/* LIST : START */}
-        <List />
+        <List items={items}/>
         {/* LIST : END */}
 
     </div>

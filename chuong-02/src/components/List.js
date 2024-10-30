@@ -1,6 +1,15 @@
+import Item from "./Item";
 
+function List(props) {
 
-function List() {
+    const { items } = props;
+
+    let eleItem = items.map((item, index) => {
+        return (
+            <Item key={index} index={index} name={item.name} level={item.level} />
+        );
+    });
+
   return (
         <div className="panel panel-success">
             <div className="panel-heading">List Task</div>
@@ -18,62 +27,7 @@ function List() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td className="text-center">1</td>
-                        <td>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis
-                            ea c
-                        </td>
-                        <td className="text-center">
-                            <span className="label label-danger">High</span>
-                        </td>
-                        <td>
-                            <button type="button" className="btn btn-warning">
-                            Edit
-                            </button>
-                            <button type="button" className="btn btn-danger">
-                            Delete
-                            </button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td className="text-center">2</td>
-                        <td>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis
-                            ea c
-                        </td>
-                        <td className="text-center">
-                            <span className="label label-default">Small</span>
-                        </td>
-                        <td>
-                            <button type="button" className="btn btn-warning">
-                            Edit
-                            </button>
-                            <button type="button" className="btn btn-danger">
-                            Delete
-                            </button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td className="text-center">3</td>
-                        <td>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis
-                            ea c
-                        </td>
-                        <td className="text-center">
-                            <span className="label label-info">Medium</span>
-                        </td>
-                        <td>
-                            <button type="button" className="btn btn-warning">
-                            Edit
-                            </button>
-                            <button type="button" className="btn btn-danger">
-                            Delete
-                            </button>
-                        </td>
-                    </tr>
+                    {eleItem}
                 </tbody>
             </table>
         </div>
