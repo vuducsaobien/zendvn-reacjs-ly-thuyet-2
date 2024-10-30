@@ -16,7 +16,7 @@ function Course(props) {
 
     // Set States
     const [isShowOutline, setIsShowOutline] = useState(false);
-    const [totalStudent, setTotalStudent] = useState(68);
+    // const [totalStudent, setTotalStudent] = useState(68);
 
 
     function handleToogleOutline() {
