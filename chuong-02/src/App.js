@@ -18,7 +18,7 @@ function App() {
                 <input
                 type="text"
                 className="form-control"
-                ref="search"
+                // ref="search"
                 placeholder="Search for..."
                 />
                 <span className="input-group-btn">
@@ -44,17 +44,17 @@ function App() {
                 </button>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li>
-                    <a role="button">Name ASC</a>
+                    <button type="button">Name ASC</button>
                 </li>
                 <li>
-                    <a role="button">Name DESC</a>
+                    <button type="button">Name DESC</button>
                 </li>
                 <li role="separator" className="divider" />
                 <li>
-                    <a role="button">Level ASC</a>
+                    <button type="button">Level ASC</button>
                 </li>
                 <li>
-                    <a role="button">Level DESC</a>
+                    <button type="button">Level DESC</button>
                 </li>
                 </ul>
                 <span className="label label-success label-medium">NAME - DESC</span>
@@ -82,7 +82,7 @@ function App() {
                     type="text"
                     className="form-control"
                     placeholder="Task Name"
-                    ref="task_name"
+                    // ref="task_name"
                 />
                 </div>
                 <div className="form-group">
@@ -94,7 +94,7 @@ function App() {
                     id="inputDs"
                     className="form-control"
                     required="required"
-                    ref="task_level"
+                    // ref="task_level"
                 >
                     Small
                     <option value={1}>Medium</option>
