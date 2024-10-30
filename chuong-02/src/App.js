@@ -4,23 +4,12 @@ import Control from "./components/Control";
 import Form from "./components/Form";
 import List from "./components/List";
 import Title from "./components/Title";
+import dataMock from './mock/tasks';
 
 function App() {
 
-    const [items] = useState([
-        {
-            name: 'A',
-            level: 0
-        },
-        {
-            name: 'B',
-            level: 1
-        },
-        {
-            name: 'C',
-            level: 2
-        }
-    ]);
+    const [items] = useState(dataMock);
+    // const { items } = mockData;
 
   return (
     <div>
