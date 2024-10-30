@@ -6,3 +6,5 @@ npx create-react-app chuong-01
 
 Handling Event es6
 Ref and the DOM
+
+npm install uuid
