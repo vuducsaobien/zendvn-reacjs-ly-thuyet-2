@@ -16,11 +16,17 @@ function App() {
 
     let eleForm = null;
     if (isShowForm) {
-        eleForm = <Form />;
+        eleForm = <Form 
+            onClickCancel={closeForm}
+        />;
     }
 
     function handleToogleForm(){
         setIsShowForm(!isShowForm);
+    }
+
+    function closeForm(){
+        setIsShowForm(false);
     }
 
   return (

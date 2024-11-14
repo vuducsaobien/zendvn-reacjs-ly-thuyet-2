@@ -1,6 +1,13 @@
 
 
-function Form() {
+function Form(props) {
+    // Capture props in a closure
+    const { onClickCancel } = props;
+
+    function handleCancel(){
+        onClickCancel();
+    }
+
   return (
         <div className="row">
             <div className="col-md-offset-7 col-md-5">
@@ -35,7 +42,7 @@ function Form() {
                     <button type="button" className="btn btn-primary">
                     Submit
                     </button>
-                    <button type="button" className="btn btn-default">
+                    <button onClick={handleCancel} type="button" className="btn btn-default">
                     Cancel
                     </button>
                 </form>
