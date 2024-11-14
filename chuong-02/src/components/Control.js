@@ -4,7 +4,7 @@ import Sort from "./Sort";
 
 function Control(props) {
     // Capture props in a closure
-    const { onClickAdd, isShowFormApp } = props;
+    const { onClickAdd, isShowFormApp, onClickGoApp } = props;
 
     // console.log('isShowFormApp');
     // console.log(isShowFormApp);
@@ -13,9 +13,10 @@ function Control(props) {
         onClickAdd();
     }
 
-    function handleClickSearchControl(inputStringSearch){
-        console.log(inputStringSearch);
-        console.log('Control - handleClickSearchControl');
+    function handleClickSearchControl(inputStringFromSearch){
+        // console.log(inputStringFromSearch);
+        // console.log('Control - handleClickSearchControl');
+        onClickGoApp(inputStringFromSearch)
     }
 
     let eleButton = <button onClick={handleAdd} type="button" className="btn btn-info btn-block">Add Task</button>;

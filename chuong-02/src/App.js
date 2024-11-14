@@ -14,6 +14,8 @@ function App() {
 
     const [isShowForm, setIsShowForm] = useState(false);
 
+    // const [strSearch] = useState('');
+
     let eleForm = null;
     if (isShowForm) {
         eleForm = <Form 
@@ -29,6 +31,15 @@ function App() {
         setIsShowForm(false);
     }
 
+    function handleClickSearchApp(inputStringFromControl){
+        console.log(inputStringFromControl);
+        console.log('App - handleClickSearchApp');
+    }
+
+    // console.log('strSearch');
+    // console.log(strSearch);
+
+
   return (
     <div>
         {/* TITLE : START */}
@@ -37,8 +48,10 @@ function App() {
 
         {/* CONTROL (SEARCH + SORT + ADD) : START */}
         <Control 
+            // strSearch = {strSearch}
             onClickAdd={handleToogleForm}
             isShowFormApp = {isShowForm}
+            onClickGoApp = {handleClickSearchApp}
         />
         {/* CONTROL (SEARCH + SORT + ADD) : END */}
 
