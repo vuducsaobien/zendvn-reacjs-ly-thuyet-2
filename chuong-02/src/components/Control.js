@@ -1,6 +1,14 @@
 
 
-function Control() {
+function Control(props) {
+    // Capture props in a closure
+    const { onClickAdd } = props;
+
+
+    function handleAdd(){
+        onClickAdd();
+    }
+
   return (
         <div className="row">
             {/* SEARCH : START */}
@@ -56,7 +64,7 @@ function Control() {
             
             {/* ADD : START */}
             <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                <button type="button" className="btn btn-info btn-block">
+                <button onClick={handleAdd} type="button" className="btn btn-info btn-block">
                     Add Task
                 </button>
             </div>

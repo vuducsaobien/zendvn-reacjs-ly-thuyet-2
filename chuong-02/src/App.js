@@ -8,8 +8,20 @@ import dataMock from './mock/tasks';
 
 function App() {
 
+    // Set States
     const [items] = useState(dataMock);
     // const { items } = mockData;
+
+    const [isShowForm, setIsShowForm] = useState(false);
+
+    let eleForm = null;
+    if (isShowForm) {
+        eleForm = <Form />;
+    }
+
+    function handleToogleForm(){
+        setIsShowForm(!isShowForm);
+    }
 
   return (
     <div>
@@ -18,11 +30,11 @@ function App() {
         {/* TITLE : END */}
 
         {/* CONTROL (SEARCH + SORT + ADD) : START */}
-        <Control />
+        <Control onClickAdd={handleToogleForm}/>
         {/* CONTROL (SEARCH + SORT + ADD) : END */}
 
         {/* FORM : START */}
-        <Form />
+        {eleForm}
         {/* FORM : END */}
 
         {/* LIST : START */}
