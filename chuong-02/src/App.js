@@ -30,7 +30,10 @@ function App() {
         {/* TITLE : END */}
 
         {/* CONTROL (SEARCH + SORT + ADD) : START */}
-        <Control onClickAdd={handleToogleForm}/>
+        <Control 
+            onClickAdd={handleToogleForm}
+            isShowFormApp = {isShowForm}
+        />
         {/* CONTROL (SEARCH + SORT + ADD) : END */}
 
         {/* FORM : START */}

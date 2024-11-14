@@ -2,11 +2,19 @@
 
 function Control(props) {
     // Capture props in a closure
-    const { onClickAdd } = props;
+    const { onClickAdd, isShowFormApp } = props;
 
+    // console.log('isShowFormApp');
+    // console.log(isShowFormApp);
 
     function handleAdd(){
         onClickAdd();
+    }
+
+    let eleButton = <button onClick={handleAdd} type="button" className="btn btn-info btn-block">Add Task</button>;
+
+    if (isShowFormApp === true) {
+        eleButton = <button onClick={handleAdd} type="button" className="btn btn-success btn-block">Close Form</button>;
     }
 
   return (
@@ -64,9 +72,7 @@ function Control(props) {
             
             {/* ADD : START */}
             <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                <button onClick={handleAdd} type="button" className="btn btn-info btn-block">
-                    Add Task
-                </button>
+                {eleButton}
             </div>
             {/* ADD : END */}
         </div>
