@@ -13,11 +13,11 @@ function Control(props) {
         onClickAdd();
     }
 
-    function handleClickSearchControl(inputStringFromSearch){
-        // console.log(inputStringFromSearch);
-        // console.log('Control - handleClickSearchControl');
-        onClickGoApp(inputStringFromSearch)
-    }
+    // function handleSearchControl(inputStringFromSearch){
+    //     // console.log(inputStringFromSearch);
+    //     // console.log('Control - handleSearch');
+    //     onClickGoApp(inputStringFromSearch)
+    // }
 
     let eleButton = <button onClick={handleAdd} type="button" className="btn btn-info btn-block">Add Task</button>;
 
@@ -28,7 +28,9 @@ function Control(props) {
   return (
         <div className="row">
             {/* SEARCH : START */}
-            <Search onClickGo={handleClickSearchControl}/>
+            {/* <Search onClickGoControl={handleSearchControl}/> */}
+            <Search onClickGoControl={onClickGoApp}/>
+
             {/* SEARCH : END */}
 
             {/* SORT : START */}

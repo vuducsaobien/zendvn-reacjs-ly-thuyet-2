@@ -5,24 +5,25 @@ import { useState
 
 
 function Search(props) {
-    const { onClickGo } = props;
+    const { onClickGoControl } = props;
 
     // Create a ref for the username input
     // const searchRef = useRef(null);
 
     // States
-    const [strSearchSearch, setStrSearchSearch] = useState('123');
+    const [strSearchSearch, setStrSearchSearch] = useState('');
     
 
     // function handleSearch(search){
     function handleSearch(){
         // console.log('handleSearch');
         // console.log(strSearchSearch);
-        onClickGo(strSearchSearch);
+        onClickGoControl(strSearchSearch);
     }
 
     function handleClear(){
-        setStrSearchSearch('');
+        setStrSearchSearch(''); // clear state: strSearchSearch
+        onClickGoControl(''); // clear state: strSearchApp
     }
 
     function handleChange(event){

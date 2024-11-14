@@ -8,3 +8,16 @@ Handling Event es6
 Ref and the DOM
 
 npm install uuid
+
+// Search Flow 
+(State strSearchApp dùng để search các giá trị mock data)                                 (State strSearchStr để thay đổi input value tại Search component luôn) 
+(2 State khác nhau : strSearchApp & strSearchStr)
+App state: strSearchApp                                                                    Search state: strSearchStr                         
+
+Button Go    => setStrSearchApp (App) = 'X'                                             => setStrSearchSearch (Search) = 'X'
+Button Clear => setStrSearchApp (App) = ''                                              => setStrSearchSearch (Search) = ''
+
+
+App       >>>>>>>                            Control        >>>>>>>>>                                 Search
+
+Props:   onClickGoApp = {handleSearchApp}                  onClickGoControl={onClickGoApp}          
