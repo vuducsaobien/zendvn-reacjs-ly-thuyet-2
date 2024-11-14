@@ -21,6 +21,10 @@ function Search() {
         setStrSearchSearch('');
     }
 
+    function handleChange(event){
+        setStrSearchSearch(event.target.value);
+    }
+
     return (
         <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
             <div className="input-group">
@@ -31,7 +35,8 @@ function Search() {
                     ref={searchRef}
                     placeholder="Search for..."
                     value={strSearchSearch}
-                    onChange={(e) => setStrSearchSearch(e.target.value)}
+                    // onChange={(e) => setStrSearchSearch(e.target.value)} // cach 1
+                    onChange={handleChange} // cach 2
                 />
                 <span className="input-group-btn">
                 <button onClick={() => handleSearch(searchRef.current.value)} className="btn btn-info" type="button">
