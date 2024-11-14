@@ -33,20 +33,28 @@ function App() {
 
     function handleSearchApp(inputStringFromControl){
         // console.log(inputStringFromControl);
-        console.log('App - handleSearch : ', inputStringFromControl);
-
-        console.log('App - strSearchApp 1 : ', strSearchApp);
-
+        // console.log('App - handleSearch : ', inputStringFromControl);
+        // console.log('App - strSearchApp 1 : ', strSearchApp);
         setStrSearchApp(inputStringFromControl);
+        // console.log('App - strSearchApp 2 : ', strSearchApp);
+    }
 
-        console.log('App - strSearchApp 2 : ', strSearchApp);
+    // Logic Find search
+    let itemsOrigin = items;
+    let itemsResult = [];
+    const search = strSearchApp;
+    if (search.length > 0) {
+        itemsOrigin.forEach((item) => {
+            if (item.name.toLowerCase().indexOf(search) !== -1) {
+                itemsResult.push(item);
+            }
+        })
+    } else {
+        itemsResult = itemsOrigin;
+        console.log('123 s');
     }
 
     console.log('App - strSearchApp 3 : ', strSearchApp);
-
-
-    // console.log('strSearch');
-    // console.log(strSearch);
 
 
   return (
@@ -69,7 +77,7 @@ function App() {
         {/* FORM : END */}
 
         {/* LIST : START */}
-        <List items={items}/>
+        <List items={itemsResult}/>
         {/* LIST : END */}
 
     </div>
