@@ -21,3 +21,6 @@ Button Clear => setStrSearchApp (App) = ''                                      
 App       >>>>>>>                            Control        >>>>>>>>>                                 Search
 
 Props:   onClickGoApp = {handleSearchApp}                  onClickGoControl={onClickGoApp}          
+
+
+npm i --save lodash

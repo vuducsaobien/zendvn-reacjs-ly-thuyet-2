@@ -5,6 +5,9 @@ import Form from "./components/Form";
 import List from "./components/List";
 import Title from "./components/Title";
 import dataMock from './mock/tasks';
+// import _ from 'lodash';
+import {filter as filterDash, includes} from 'lodash';
+
 
 function App() {
 
@@ -40,19 +43,35 @@ function App() {
     }
 
     // Logic Find search
-    let itemsOrigin = items;
+    // let itemsOrigin = items;
+    let itemsOrigin = [...items];
+
     let itemsResult = [];
     const search = strSearchApp;
     if (search.length > 0) {
-        itemsOrigin.forEach((item) => {
-            if (item.name.toLowerCase().indexOf(search) !== -1) {
-                itemsResult.push(item);
-            }
-        })
+        // C1
+        // itemsOrigin.forEach((item) => {
+        //     if (item.name.toLowerCase().indexOf(search) !== -1) {
+        //         itemsResult.push(item);
+        //     }
+        // })
+
+        // C2
+        // itemsResult = _.filter(itemsOrigin, (item) => {
+        //     return _.includes(item.name, search);
+        // });
+        itemsResult = filterDash(itemsOrigin, (item) => {
+            return includes(item.name, search);
+        });
+
     } else {
         itemsResult = itemsOrigin;
-        console.log('123 s');
+        // console.log('123 s');
     }
+
+    itemsOrigin.push('123 push');
+    console.log('itemsOrigin', itemsOrigin); // 5 phan tu
+    console.log('items State', items); // Cung 5 phan tu luon => Muon khong thay doi state items => let itemsOrigin = [...items];
 
     console.log('App - strSearchApp 3 : ', strSearchApp);
 
