@@ -1,20 +1,23 @@
 // import { getLevel } from "../helpers/level";
-import { useState, useRef } from 'react';
+import { useState
+    // , useRef 
+} from 'react';
 
 
 function Search() {
     // const { index, name, level } = props;
 
     // Create a ref for the username input
-    const searchRef = useRef(null);
+    // const searchRef = useRef(null);
 
     // States
     const [strSearchSearch, setStrSearchSearch] = useState('123');
     
 
-    function handleSearch(search){
-        console.log('handleSearch');
-        console.log(search);
+    // function handleSearch(search){
+    function handleSearch(){
+        // console.log('handleSearch');
+        console.log(strSearchSearch);
     }
 
     function handleClear(){
@@ -32,14 +35,14 @@ function Search() {
                     type="text"
                     className="form-control"
                     // ref="search"
-                    ref={searchRef}
+                    // ref={searchRef}
                     placeholder="Search for..."
                     value={strSearchSearch}
                     // onChange={(e) => setStrSearchSearch(e.target.value)} // cach 1
                     onChange={handleChange} // cach 2
                 />
                 <span className="input-group-btn">
-                <button onClick={() => handleSearch(searchRef.current.value)} className="btn btn-info" type="button">
+                <button onClick={() => handleSearch()} className="btn btn-info" type="button">
                     Go!
                 </button>
 
