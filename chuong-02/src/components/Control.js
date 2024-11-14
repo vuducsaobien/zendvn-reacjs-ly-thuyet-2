@@ -13,6 +13,11 @@ function Control(props) {
         onClickAdd();
     }
 
+    function handleClickSearchControl(inputStringSearch){
+        console.log(inputStringSearch);
+        console.log('Control - handleClickSearchControl');
+    }
+
     let eleButton = <button onClick={handleAdd} type="button" className="btn btn-info btn-block">Add Task</button>;
 
     if (isShowFormApp === true) {
@@ -22,7 +27,7 @@ function Control(props) {
   return (
         <div className="row">
             {/* SEARCH : START */}
-            <Search/>
+            <Search onClickGo={handleClickSearchControl}/>
             {/* SEARCH : END */}
 
             {/* SORT : START */}

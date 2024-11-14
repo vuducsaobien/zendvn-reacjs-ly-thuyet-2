@@ -4,8 +4,8 @@ import { useState
 } from 'react';
 
 
-function Search() {
-    // const { index, name, level } = props;
+function Search(props) {
+    const { onClickGo } = props;
 
     // Create a ref for the username input
     // const searchRef = useRef(null);
@@ -17,7 +17,8 @@ function Search() {
     // function handleSearch(search){
     function handleSearch(){
         // console.log('handleSearch');
-        console.log(strSearchSearch);
+        // console.log(strSearchSearch);
+        onClickGo(strSearchSearch);
     }
 
     function handleClear(){
