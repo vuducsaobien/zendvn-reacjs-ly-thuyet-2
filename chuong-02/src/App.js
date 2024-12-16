@@ -19,8 +19,8 @@ function App() {
 
     const [strSearchApp, setStrSearchApp] = useState('');
 
-    const [orderBy] = useState('name');
-    const [orderDir] = useState('asc');
+    const [orderBy, setOrderBy] = useState('name');
+    const [orderDir, setOrderDir] = useState('asc');
 
 
     let eleForm = null;
@@ -32,6 +32,12 @@ function App() {
 
     function handleToogleForm(){
         setIsShowForm(!isShowForm);
+    }
+
+    function handleSortApp(orderBy, orderDir){
+        // console.log('handleSort - App : ' + orderBy + '-' + orderDir);
+        setOrderBy(orderBy);
+        setOrderDir(orderDir);
     }
 
     function closeForm(){
@@ -92,6 +98,7 @@ function App() {
             orderBy={orderBy}
             orderDir={orderDir}
             onClickAdd={handleToogleForm}
+            onClickSortApp={handleSortApp}
             isShowFormApp = {isShowForm}
             onClickGoApp = {handleSearchApp}
         />
