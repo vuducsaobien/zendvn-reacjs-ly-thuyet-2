@@ -6,7 +6,7 @@ import List from "./components/List";
 import Title from "./components/Title";
 import dataMock from './mock/tasks';
 // import _ from 'lodash';
-import {filter as filterDash, includes} from 'lodash';
+import {filter as filterDash, includes, orderBy as orderByDash} from 'lodash';
 
 
 function App() {
@@ -78,6 +78,9 @@ function App() {
         itemsResult = itemsOrigin;
         // console.log('123 s');
     }
+
+    // Sort
+    itemsResult = orderByDash(itemsResult, [orderBy], [orderDir]);
 
     // itemsOrigin.push('123 push');
     // console.log('itemsOrigin', itemsOrigin); // 5 phan tu
