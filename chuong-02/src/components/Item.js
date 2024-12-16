@@ -1,8 +1,13 @@
 import { getLevel } from "../helpers/level";
 
-
 function item(props) {
-    const { index, name, level } = props;
+    const { index, name, level, id, onClickDeleteList } = props;
+
+    // Functions
+    function handleDeleteItem(id){
+        // console.log(id)
+        onClickDeleteList(id)
+    }
 
     return (
         <tr>
@@ -13,7 +18,7 @@ function item(props) {
             </td>
             <td>
                 <button type="button" className="btn btn-warning">Edit</button>
-                <button type="button" className="btn btn-danger">Delete</button>
+                <button onClick={() => {handleDeleteItem(id)}} type="button" className="btn btn-danger">Delete</button>
             </td>
         </tr>
     );

@@ -52,6 +52,12 @@ function App() {
         // console.log('App - strSearchApp 2 : ', strSearchApp);
     }
 
+    function handleDeleteApp(id){
+        console.log('handleDelete - App : ' + id);
+        // setOrderBy(orderBy);
+        // setOrderDir(orderDir);
+    }
+
     // Logic Find search
     // let itemsOrigin = items;
     let itemsOrigin = [...items];
@@ -112,7 +118,7 @@ function App() {
         {/* FORM : END */}
 
         {/* LIST : START */}
-        <List items={itemsResult}/>
+        <List onClickDeleteApp={handleDeleteApp} items={itemsResult}/>
         {/* LIST : END */}
 
     </div>

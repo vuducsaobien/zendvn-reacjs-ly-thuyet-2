@@ -2,11 +2,11 @@ import Item from "./Item";
 
 function List(props) {
 
-    const { items } = props;
+    const { items, onClickDeleteApp } = props;
 
     let eleItem = items.map((item, index) => {
         return (
-            <Item key={index} index={index} name={item.name} level={item.level} />
+            <Item onClickDeleteList={onClickDeleteApp} key={index} index={index} name={item.name} level={item.level} id={item.id} />
         );
     });
 
