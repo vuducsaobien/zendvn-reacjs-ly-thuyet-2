@@ -6,22 +6,18 @@ import List from "./components/List";
 import Title from "./components/Title";
 import dataMock from './mock/tasks';
 // import _ from 'lodash';
-import {filter as filterDash, includes, orderBy as orderByDash} from 'lodash';
+import {filter as filterDash, includes, orderBy as orderByDash, remove as removeDash} from 'lodash';
 
 
 function App() {
 
     // Set States
-    const [items] = useState(dataMock);
+    const [items, setItems] = useState(dataMock);
     // const { items } = mockData;
-
     const [isShowForm, setIsShowForm] = useState(false);
-
     const [strSearchApp, setStrSearchApp] = useState('');
-
     const [orderBy, setOrderBy] = useState('name');
     const [orderDir, setOrderDir] = useState('asc');
-
 
     let eleForm = null;
     if (isShowForm) {
@@ -53,9 +49,10 @@ function App() {
     }
 
     function handleDeleteApp(id){
-        console.log('handleDelete - App : ' + id);
-        // setOrderBy(orderBy);
-        // setOrderDir(orderDir);
+        let itemsRemove = removeDash(items, (item) => {
+            return item.id !== id
+        });
+        setItems(itemsRemove);
     }
 
     // Logic Find search
