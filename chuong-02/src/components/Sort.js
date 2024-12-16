@@ -1,8 +1,9 @@
 // import { getLevel } from "../helpers/level";
 
 
-function Sort() {
-    // const { index, name, level } = props;
+function Sort(props) {
+    const { orderBy, orderDir } = props;
+    let strSort = `${orderBy} ${orderDir}`;
 
     return (
         <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
@@ -32,7 +33,7 @@ function Sort() {
                     <button type="button">Level DESC</button>
                 </li>
                 </ul>
-                <span className="label label-success label-medium">NAME - DESC</span>
+                <span className="label label-success label-medium">{strSort}</span>
             </div>
         </div>
     );

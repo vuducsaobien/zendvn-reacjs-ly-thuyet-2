@@ -4,7 +4,7 @@ import Sort from "./Sort";
 
 function Control(props) {
     // Capture props in a closure
-    const { onClickAdd, isShowFormApp, onClickGoApp } = props;
+    const { onClickAdd, isShowFormApp, onClickGoApp, orderDir, orderBy } = props;
 
     // console.log('isShowFormApp');
     // console.log(isShowFormApp);
@@ -34,7 +34,10 @@ function Control(props) {
             {/* SEARCH : END */}
 
             {/* SORT : START */}
-            <Sort />
+            <Sort 
+                orderBy={orderBy}
+                orderDir={orderDir}
+            />
             {/* SORT : END */}
             
             {/* ADD : START */}

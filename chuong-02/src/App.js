@@ -19,6 +19,10 @@ function App() {
 
     const [strSearchApp, setStrSearchApp] = useState('');
 
+    const [orderBy] = useState('name');
+    const [orderDir] = useState('asc');
+
+
     let eleForm = null;
     if (isShowForm) {
         eleForm = <Form 
@@ -61,7 +65,7 @@ function App() {
         //     return _.includes(item.name, search);
         // });
         itemsResult = filterDash(itemsOrigin, (item) => {
-            return includes(item.name, search);
+            return includes(item.name.toLowerCase(), search.toLowerCase());
         });
 
     } else {
@@ -69,11 +73,11 @@ function App() {
         // console.log('123 s');
     }
 
-    itemsOrigin.push('123 push');
-    console.log('itemsOrigin', itemsOrigin); // 5 phan tu
-    console.log('items State', items); // Cung 5 phan tu luon => Muon khong thay doi state items => let itemsOrigin = [...items];
+    // itemsOrigin.push('123 push');
+    // console.log('itemsOrigin', itemsOrigin); // 5 phan tu
+    // console.log('items State', items); // Cung 5 phan tu luon => Muon khong thay doi state items => let itemsOrigin = [...items];
 
-    console.log('App - strSearchApp 3 : ', strSearchApp);
+    // console.log('App - strSearchApp 3 : ', strSearchApp);
 
 
   return (
@@ -85,6 +89,8 @@ function App() {
         {/* CONTROL (SEARCH + SORT + ADD) : START */}
         <Control 
             // strSearch = {strSearch}
+            orderBy={orderBy}
+            orderDir={orderDir}
             onClickAdd={handleToogleForm}
             isShowFormApp = {isShowForm}
             onClickGoApp = {handleSearchApp}
