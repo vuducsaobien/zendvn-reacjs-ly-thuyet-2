@@ -10,24 +10,28 @@ function StudyForm() {
     const [fullName, setFullName] = useState('');
     const [course, setCourse] = useState('php');
     const [object, setObject] = useState('nkt');
+    const [sendMail, setSendMail] = useState(true);
 
 
     function handleChange(event) {
         // setFullName(event.target.value)
-        const {name, value} = event.target;
+        const {name, value, checked} = event.target;
         if (name === 'fullName') setFullName(value);
         if (name === 'course') setCourse(value);
         if (name === 'object') setObject(value);
+        if (name === 'sendMail') setSendMail(checked);
     }
 
     function handleSubmit(event) {
+        event.preventDefault();
+
         const formElements = event.target.elements;
         const message = `Fullname: ${formElements.fullName.value}
         Course: ${formElements.course.value}
-        Type: ${formElements.object.value}`;
+        Type: ${formElements.object.value}
+        Send Mail: ${formElements.sendMail.checked}`;
 
         alert(message);
-        event.preventDefault();
     }
 
   return (
@@ -82,6 +86,18 @@ function StudyForm() {
                             </label>
                         </div>
                     </div>
+
+                    <div className="checkbox">
+                        <label>
+                            <input 
+                                checked={sendMail === true}
+                                onChange={handleChange} 
+                                type="checkbox"
+                                name="sendMail"
+                            />
+                            Send Mail</label>
+                    </div>
+
 
                     <div className="form-group">
                         <button className="btn btn-info" type="submit">Submit</button>
