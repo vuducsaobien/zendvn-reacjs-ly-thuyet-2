@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// import App from './App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-import StudyForm from './StudyForm';
+// import StudyForm from './StudyForm';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
@@ -14,8 +14,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 /* Render without StrictMode for single render */
 root.render(
-  // <App />
-  <StudyForm />
+  <App />
+  // <StudyForm />
 );
 
 // If you want to start measuring performance in your app, pass a function

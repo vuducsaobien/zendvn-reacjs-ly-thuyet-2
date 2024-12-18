@@ -22,6 +22,7 @@ function App() {
     let eleForm = null;
     if (isShowForm) {
         eleForm = <Form 
+            onClickSubmit={handleSubmitApp}
             onClickCancel={closeForm}
         />;
     }
@@ -53,6 +54,11 @@ function App() {
             return item.id !== id
         });
         setItems(itemsRemove);
+    }
+
+    function handleSubmitApp(item){
+        console.log('App - handleSubmitApp');
+        console.log(item);
     }
 
     // Logic Find search
