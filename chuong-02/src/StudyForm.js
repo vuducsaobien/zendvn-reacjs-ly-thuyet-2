@@ -8,14 +8,23 @@ function StudyForm() {
 
     // Set States
     const [fullName, setFullName] = useState('');
+    const [course, setCourse] = useState('php');
 
     function handleChange(event) {
-        setFullName(event.target.value)
+        // setFullName(event.target.value)
+        const {name, value} = event.target;
+        if (name === 'fullName') setFullName(value);
+        if (name === 'course') setCourse(value);
     }
 
     function handleSubmit(event) {
         // alert(fullName); // C1
         // alert(event.target.elements.fullName.value); // C2
+
+        // alert(`Fullname: ${fullName}\nCourse: ${course}`); // C1
+        
+        const formElements = event.target.elements;
+        alert(`Fullname: ${formElements.fullName.value}\nCourse: ${formElements.course.value}`); // C2
         event.preventDefault();
     }
 
@@ -40,9 +49,13 @@ function StudyForm() {
 
                     <div className="form-group">
                         <label htmlFor="">Khoá học</label>
-                        <select name="" id="input" className="form-control" required>
+                        <select name="course" id="input" className="form-control" required 
+                            onChange={handleChange} value={course}    
+                        >
                             <option value="angular">Angular</option>
                             <option value="react">React</option>
+                            <option value="nodejs">NodeJs</option>
+                            <option value="php">PHP</option>
                         </select>
                     </div>
 
