@@ -7,6 +7,7 @@ import Title from "./components/Title";
 import dataMock from './mock/tasks';
 // import _ from 'lodash';
 import {filter as filterDash, includes, orderBy as orderByDash, remove as removeDash} from 'lodash';
+import { v4 as uuidv4 } from 'uuid';
 
 
 function App() {
@@ -57,8 +58,13 @@ function App() {
     }
 
     function handleSubmitApp(item){
-        console.log('App - handleSubmitApp');
-        console.log(item);
+        let newItems = [...items, {
+            id: uuidv4(),
+            name: item.name,
+            level: +item.level
+        }];
+        setItems(newItems);
+        setIsShowForm(false);
     }
 
     // Logic Find search
