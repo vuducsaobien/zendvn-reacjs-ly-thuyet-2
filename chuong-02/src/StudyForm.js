@@ -9,22 +9,24 @@ function StudyForm() {
     // Set States
     const [fullName, setFullName] = useState('');
     const [course, setCourse] = useState('php');
+    const [object, setObject] = useState('nkt');
+
 
     function handleChange(event) {
         // setFullName(event.target.value)
         const {name, value} = event.target;
         if (name === 'fullName') setFullName(value);
         if (name === 'course') setCourse(value);
+        if (name === 'object') setObject(value);
     }
 
     function handleSubmit(event) {
-        // alert(fullName); // C1
-        // alert(event.target.elements.fullName.value); // C2
-
-        // alert(`Fullname: ${fullName}\nCourse: ${course}`); // C1
-        
         const formElements = event.target.elements;
-        alert(`Fullname: ${formElements.fullName.value}\nCourse: ${formElements.course.value}`); // C2
+        const message = `Fullname: ${formElements.fullName.value}
+        Course: ${formElements.course.value}
+        Type: ${formElements.object.value}`;
+
+        alert(message);
         event.preventDefault();
     }
 
@@ -63,17 +65,20 @@ function StudyForm() {
                         <label htmlFor="">Khoá học</label>
                         <div className="radio">
                             <label>
-                                <input type="radio" name="dsd" id="input" defaultValue />Học viên cũ
+                                <input checked={object === 'old_student'} onChange={handleChange} 
+                                value="old_student" type="radio" name="object"/>Học viên cũ
                             </label>
                         </div>
                         <div className="radio">
                             <label>
-                                <input type="radio" name="dsd" id="input" defaultValue />Học sinh sinh viên
+                                <input checked={object === 'student'} onChange={handleChange} 
+                                value="student" type="radio" name="object"/>Học sinh sinh viên
                             </label>
                         </div>
                         <div className="radio">
                             <label>
-                                <input type="radio" name="dsd" id="input" defaultValue />Người khuyết tật
+                                <input checked={object === 'nkt'} value="nkt" onChange={handleChange} 
+                                type="radio" name="object"/>Người khuyết tật
                             </label>
                         </div>
                     </div>
