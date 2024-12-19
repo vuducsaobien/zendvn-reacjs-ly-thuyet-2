@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 function Form(props) {
     // Capture props in a closure
-    const { onClickCancel, onClickSubmit } = props;
+    const { onClickCancel, onClickSubmit, itemSelected } = props;
 
     // States
     const [task_name, setTaskName] = useState('');

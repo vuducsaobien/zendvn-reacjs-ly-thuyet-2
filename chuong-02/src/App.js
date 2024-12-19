@@ -69,6 +69,11 @@ function App() {
         setIsShowForm(false);
     }
 
+    function handleEdit(item){
+        setItemSelected(item);
+        setIsShowForm(true);
+    }
+
     // Logic Find search
     // let itemsOrigin = items;
     let itemsOrigin = [...items];
@@ -129,7 +134,9 @@ function App() {
         {/* FORM : END */}
 
         {/* LIST : START */}
-        <List onClickDeleteApp={handleDeleteApp} items={itemsResult}/>
+        <List
+            handleEdit={handleEdit}
+            onClickDeleteApp={handleDeleteApp} items={itemsResult}/>
         {/* LIST : END */}
 
     </div>
