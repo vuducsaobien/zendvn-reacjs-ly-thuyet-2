@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Form(props) {
     // Capture props in a closure
@@ -7,6 +7,14 @@ function Form(props) {
     // States
     const [task_name, setTaskName] = useState('');
     const [task_level, setTaskLevel] = useState(0);
+
+    // Thêm useEffect để cập nhật state khi itemSelected thay đổi
+    useEffect(() => {
+        if (itemSelected) {
+            setTaskName(itemSelected.name);
+            setTaskLevel(itemSelected.level);
+        }
+    }, [itemSelected]);
 
     // Functions
     function handleCancel(){

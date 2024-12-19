@@ -32,6 +32,7 @@ function App() {
 
     function handleToogleForm(){
         setIsShowForm(!isShowForm);
+        setItemSelected(null);
     }
 
     function handleSortApp(orderBy, orderDir){
@@ -42,6 +43,7 @@ function App() {
 
     function closeForm(){
         setIsShowForm(false);
+        setItemSelected(null);
     }
 
     function handleSearchApp(inputStringFromControl){
