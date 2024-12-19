@@ -18,10 +18,11 @@ function Form(props) {
         if (name === 'task_name') setTaskName(value);
         if (name === 'task_level') setTaskLevel(value);
     }
+    console.log(itemSelected);
 
     function handleSubmitForm(event) {
         event.preventDefault();
-        
+
         let item = {
             name : task_name,
             level : task_level

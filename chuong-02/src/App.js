@@ -19,10 +19,12 @@ function App() {
     const [strSearchApp, setStrSearchApp] = useState('');
     const [orderBy, setOrderBy] = useState('name');
     const [orderDir, setOrderDir] = useState('asc');
+    const [itemSelected, setItemSelected] = useState(null);
 
     let eleForm = null;
     if (isShowForm) {
         eleForm = <Form 
+            itemSelected={itemSelected}
             onClickSubmit={handleSubmitApp}
             onClickCancel={closeForm}
         />;
