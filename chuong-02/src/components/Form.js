@@ -7,12 +7,14 @@ function Form(props) {
     // States
     const [task_name, setTaskName] = useState('');
     const [task_level, setTaskLevel] = useState(0);
+    const [actionForm, setActionForm] = useState('add'); // Add or Edit
 
     // Thêm useEffect để cập nhật state khi itemSelected thay đổi
     useEffect(() => {
         if (itemSelected) {
             setTaskName(itemSelected.name);
             setTaskLevel(itemSelected.level);
+            setActionForm('edit');
         }
     }, [itemSelected]);
 
@@ -26,16 +28,28 @@ function Form(props) {
         if (name === 'task_name') setTaskName(value);
         if (name === 'task_level') setTaskLevel(value);
     }
-    console.log(itemSelected);
+    // console.log(itemSelected);
 
     function handleSubmitForm(event) {
         event.preventDefault();
 
-        let item = {
-            name : task_name,
-            level : task_level
-        };
-        onClickSubmit(item);
+        if (actionForm === 'add') {
+            let item = {
+                name : task_name,
+                level : task_level,
+                type : 'add'
+            };
+            onClickSubmit(item);
+    
+        } else if (actionForm === 'edit') {
+            let item = {
+                id : itemSelected.id,
+                name : task_name,
+                level : task_level,
+                type : 'edit',
+            };
+            onClickSubmit(item);
+        }
     }
 
   return (

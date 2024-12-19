@@ -61,7 +61,7 @@ function App() {
         setItems(itemsRemove);
     }
 
-    function handleSubmitApp(item){
+    function handleAddItem(item) {
         let newItems = [...items, {
             id: uuidv4(),
             name: item.name,
@@ -69,6 +69,30 @@ function App() {
         }];
         setItems(newItems);
         setIsShowForm(false);
+    }
+
+    function handleEditItem(item) {
+        // Tạo mảng mới và cập nhật item được chỉnh sửa
+        let newItems = items.map(elm => {
+            if (elm.id === item.id) {
+                return {
+                    ...elm,
+                    name: item.name,
+                    level: +item.level
+                }
+            }
+            return elm;
+        });
+        setItems(newItems);
+        setIsShowForm(false);
+    }
+
+    function handleSubmitApp(item){
+        if (item.type === 'add') {
+            handleAddItem(item);
+        } else if (item.type === 'edit') {
+            handleEditItem(item);
+        }
     }
 
     function handleEdit(item){
