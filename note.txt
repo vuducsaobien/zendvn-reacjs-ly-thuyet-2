@@ -29,3 +29,10 @@ F12 => Application tab => LocalStorage (Xoá khi clear cache); SessionStorage (x
 LocalStorage => LocalStorage.setItem(name, data)
 LocalStorage => LocalStorage.getItem(name)
 LocalStorage => LocalStorage.removeItem(name)
+
+
+npx create-react-app chuong-01
+    cd chuong-01
+    npm start
+    => npm install web-vitals =>     npm start
+
