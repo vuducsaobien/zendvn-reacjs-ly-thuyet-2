@@ -24,3 +24,8 @@ Props:   onClickGoApp = {handleSearchApp}                  onClickGoControl={onC
 
 
 npm i --save lodash
+
+F12 => Application tab => LocalStorage (Xoá khi clear cache); SessionStorage (xoá khi đóng Tab)
+LocalStorage => LocalStorage.setItem(name, data)
+LocalStorage => LocalStorage.getItem(name)
+LocalStorage => LocalStorage.removeItem(name)

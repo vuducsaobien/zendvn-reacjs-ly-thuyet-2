@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Control from "./components/Control";
 import Form from "./components/Form";
 import List from "./components/List";
 import Title from "./components/Title";
-import dataMock from './mock/tasks';
+// import dataMock from './mock/tasks';
 // import _ from 'lodash';
 import {filter as filterDash, includes, orderBy as orderByDash, remove as removeDash} from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
@@ -13,13 +13,23 @@ import { v4 as uuidv4 } from 'uuid';
 function App() {
 
     // Set States
-    const [items, setItems] = useState(dataMock);
+    const [items, setItems] = useState([]);
     // const { items } = mockData;
     const [isShowForm, setIsShowForm] = useState(false);
     const [strSearchApp, setStrSearchApp] = useState('');
     const [orderBy, setOrderBy] = useState('name');
     const [orderDir, setOrderDir] = useState('asc');
     const [itemSelected, setItemSelected] = useState(null);
+
+    useEffect(() => {
+        // Đoạn code này sẽ chạy một lần duy nhất khi component được mount
+        // setItems(dataMock);
+
+        const storedItems = localStorage.getItem('tasks');
+        if (storedItems) {
+          setItems(JSON.parse(storedItems));
+        }
+    }, []); // Empty dependency array = chạy một lần khi component mount
 
     let eleForm = null;
     if (isShowForm) {
@@ -59,6 +69,8 @@ function App() {
             return item.id !== id
         });
         setItems(itemsRemove);
+
+        localStorage.setItem('tasks', JSON.stringify(itemsRemove));
     }
 
     function handleAddItem(item) {
@@ -69,6 +81,8 @@ function App() {
         }];
         setItems(newItems);
         setIsShowForm(false);
+
+        localStorage.setItem('tasks', JSON.stringify(newItems));
     }
 
     function handleEditItem(item) {
@@ -85,6 +99,8 @@ function App() {
         });
         setItems(newItems);
         setIsShowForm(false);
+
+        localStorage.setItem('tasks', JSON.stringify(newItems));
     }
 
     function handleSubmitApp(item){
