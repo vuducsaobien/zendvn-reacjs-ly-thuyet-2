@@ -31,8 +31,37 @@ LocalStorage => LocalStorage.getItem(name)
 LocalStorage => LocalStorage.removeItem(name)
 
 
+chuong 03 - redux
 npx create-react-app chuong-01
     cd chuong-01
     npm start
     => npm install web-vitals =>     npm start
 
+Components
+App
+    Title
+    Control
+        Search
+        Sort
+            X
+                Y
+                    Z
+        Add(Sẽ thêm sau)
+    Form
+    List
+        Item
+
+=>  SORT (handleSortSort) => CONTROL ( onClickSortControl() ) => APP ( onClickSortApp() - orderBy, orderDir )
+=> truyền stage, prop qua quá nhiều bước => Dùng Redux để giảm số bước truyền stage, prop từ SORT qua thẳng APP luôn
+hay Redux để quản lý các stagestage
+
+Redux 
+    Storage (Cung cấp State cho các Components)
+    Reducer
+    Action
+    State
+
+=> Sử dụng redux toolkit thay cho redux core
+// npm install @reduxjs/toolkit
+npm install @reduxjs/toolkit react-redux
+// npm install redux
