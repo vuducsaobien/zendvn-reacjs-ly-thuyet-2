@@ -25,6 +25,11 @@ const appSlice = createSlice({
         TOOGLE_FORM: (state) => {
             state.isShowForm = !state.isShowForm;
             return state;
+        },
+        SORT_FORM: (state, action) => {
+            state.orderBy = action.payload.orderBy;
+            state.orderDir = action.payload.orderDir;
+            return state;
         }
     }
 });
@@ -34,18 +39,15 @@ const store = configureStore({
 });
 
 // Export các actions để sử dụng
-export const { CLOSE_FORM, OPEN_FORM, TOOGLE_FORM } = appSlice.actions;
+export const { CLOSE_FORM, OPEN_FORM, TOOGLE_FORM, SORT_FORM } = appSlice.actions;
 
-console.log('init', store.getState().isShowForm); // Init ; isShowForm = true
+console.log('init - orderBy', store.getState().orderBy); // Init ; orderBy = name
+console.log('init - orderDir', store.getState().orderDir); // Init ; orderDir = asc
 
-store.dispatch(CLOSE_FORM());
-console.log('CLOSE FORM', store.getState().isShowForm); // isShowForm phai = false
+store.dispatch(SORT_FORM({orderBy: 'level', orderDir: 'desc'}));
 
-store.dispatch(TOOGLE_FORM());
-console.log('TOOGLE FORM', store.getState().isShowForm); // isShowForm phai = true
-
-store.dispatch(OPEN_FORM());
-console.log('OPEN FORM', store.getState().isShowForm); // isShowForm phai = true
+console.log('SORT_FORM orderBy', store.getState().orderBy); // orderBy phai = level
+console.log('SORT_FORM orderDir', store.getState().orderDir); // orderDir phai = desc
 
 
 export default store;
