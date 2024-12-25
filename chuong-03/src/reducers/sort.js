@@ -4,7 +4,7 @@ import { SORT_FORM } from '../actions';
 // Các State của app.js
 const defaultState = {orderBy: 'name', orderDir: 'desc'};
 
-const sortReducer = createReducer(defaultState, (builder) => {
+const sort = createReducer(defaultState, (builder) => {
     builder
         .addCase(SORT_FORM, (state, action) => {
             state.orderBy = action.payload.orderBy;
@@ -12,4 +12,4 @@ const sortReducer = createReducer(defaultState, (builder) => {
         });
 });
 
-export default sortReducer;
+export default sort;
