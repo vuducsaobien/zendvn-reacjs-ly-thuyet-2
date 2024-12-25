@@ -6,12 +6,10 @@ const redux = configureStore({
     reducer: appReducer
 });
 
-console.log('init - orderBy', redux.getState().orderBy); // Init ; orderBy = name
-console.log('init - orderDir', redux.getState().orderDir); // Init ; orderDir = asc
+console.log('init - orderBy', redux.getState()); // Init ; orderBy = name & orderDir = desc
 
-redux.dispatch(SORT_FORM({orderBy: 'level', orderDir: 'desc'}));
+redux.dispatch(SORT_FORM({orderBy: 'level', orderDir: 'asc'}));
 
-console.log('SORT_FORM orderBy', redux.getState().orderBy); // orderBy phai = level
-console.log('SORT_FORM orderDir', redux.getState().orderDir); // orderBy phai = level
+console.log('SORT_FORM orderBy', redux.getState()); // orderBy phai = level  ; orderDir phai = asc
 
 export default redux;
