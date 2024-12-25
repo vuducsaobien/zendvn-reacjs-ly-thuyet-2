@@ -3,7 +3,8 @@ import appReducer from './reducers';
 import { OPEN_FORM, CLOSE_FORM, SORT_FORM, TOOGLE_FORM } from './actions'; // Import actions đã định nghĩa
 
 const store = configureStore({
-    reducer: appReducer
+    reducer: appReducer,
+    devTools: process.env.NODE_ENV !== 'production', // Chỉ bật DevTools khi không phải production
 });
 
 console.log('init - orderBy', store.getState()); // Init ; orderBy = name & orderDir = desc
