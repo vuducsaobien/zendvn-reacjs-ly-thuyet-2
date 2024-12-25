@@ -1,15 +1,22 @@
 import { configureStore } from '@reduxjs/toolkit';
 import appReducer from './reducers';
-import { CLOSE_FORM, OPEN_FORM, TOOGLE_FORM, SORT_FORM } from './actions'; // Import actions đã định nghĩa
+import { OPEN_FORM, CLOSE_FORM,  SORT_FORM } from './actions'; // Import actions đã định nghĩa
 
-const redux = configureStore({
+const store = configureStore({
     reducer: appReducer
 });
 
-console.log('init - orderBy', redux.getState()); // Init ; orderBy = name & orderDir = desc
+console.log('init - orderBy', store.getState()); // Init ; orderBy = name & orderDir = desc
 
-redux.dispatch(SORT_FORM({orderBy: 'level', orderDir: 'asc'}));
+store.subscribe(() => 
+    console.log('subscribe')
+);
 
-console.log('SORT_FORM orderBy', redux.getState()); // orderBy phai = level  ; orderDir phai = asc
+// store.dispatch(OPEN_FORM()); // Goi store.subscribe
+store.dispatch(CLOSE_FORM()); // Goi store.subscribe
 
-export default redux;
+store.dispatch(SORT_FORM({orderBy: 'level', orderDir: 'asc'})); // Goi store.subscribe
+
+console.log('SORT_FORM orderBy', store.getState()); // orderBy phai = level  ; orderDir phai = asc
+
+export default store;
