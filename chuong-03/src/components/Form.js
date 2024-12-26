@@ -63,7 +63,7 @@ function Form(props) {
             <div className="col-md-offset-7 col-md-5">
                 <form onSubmit={handleSubmitForm} className="form-inline">
                     <div className="form-group">
-                    <label className="sr-only" htmlFor="">
+                    <label className="sr-only" htmlFor="task_name">
                         label
                     </label>
                     <input
@@ -72,7 +72,7 @@ function Form(props) {
                     />
                     </div>
                     <div className="form-group">
-                    <label className="sr-only" htmlFor="">
+                    <label className="sr-only" htmlFor="task_level">
                         label
                     </label>
                     <select
