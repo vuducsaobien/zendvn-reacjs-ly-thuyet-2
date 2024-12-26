@@ -142,7 +142,7 @@ function App() {
 
         <List
             handleEdit={handleEdit}
-            onClickDeleteApp={handleDeleteApp} items={itemsResult}
+            onClickDeleteApp={handleDeleteApp}
         />
     </div>
   );

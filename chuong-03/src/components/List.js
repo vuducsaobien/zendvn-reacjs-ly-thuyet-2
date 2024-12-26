@@ -3,17 +3,22 @@ import { connect } from 'react-redux';
 
 function List(props) {
 
-    const { items, onClickDeleteApp, handleEdit, tasksList } = props;
-    console.log('taskList', tasksList);
+    const { items, onClickDeleteApp, handleEdit } = props;
+    // console.log('taskList', tasksList);
 
-    let eleItem = items.map((item, index) => {
-        return (
-            <Item 
-                onClickDeleteList={onClickDeleteApp} 
-                handleEdit={handleEdit}
-                key={index} index={index} name={item.name} level={item.level} id={item.id} />
-        );
-    });
+    let eleItem = <tr><th colSpan={4}>Khong co du lieu</th></tr>;
+    if (items.length > 0) {
+        eleItem = items.map((item, index) => {
+            return (
+                <Item 
+                    onClickDeleteList={onClickDeleteApp} 
+                    handleEdit={handleEdit}
+                    key={index} index={index} name={item.name} 
+                    level={item.level} id={item.id}
+                />
+            );
+        });    
+    }
 
   return (
         <div className="panel panel-success">
@@ -41,7 +46,7 @@ function List(props) {
 
 const mapStateToProps = state => {
     return {
-        tasksList : state.items
+        items : state.items
     }
 }
 
