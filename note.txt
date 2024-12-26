@@ -67,3 +67,5 @@ npm install @reduxjs/toolkit react-redux
 // npm install redux
 
 Tách từng file ra nhỏ hơn nữa, mỗi file để quản lý 1 state thôi
+
+Sử dụng được Redux devtool của Chrome thì phải install package react-redux

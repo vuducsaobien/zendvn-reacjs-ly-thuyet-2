@@ -1,8 +1,10 @@
 import Item from "./Item";
+import { connect } from 'react-redux';
 
 function List(props) {
 
-    const { items, onClickDeleteApp, handleEdit } = props;
+    const { items, onClickDeleteApp, handleEdit, tasksList } = props;
+    console.log('taskList', tasksList);
 
     let eleItem = items.map((item, index) => {
         return (
@@ -37,4 +39,11 @@ function List(props) {
     );
 }
 
-export default List;
+const mapStateToProps = state => {
+    return {
+        tasksList : state.items
+    }
+}
+
+export default connect(mapStateToProps, null) (List);
+// Trong List sẽ tạo ra prop tên là tasksList = state.items
