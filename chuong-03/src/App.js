@@ -134,7 +134,6 @@ function App() {
             orderDir={orderDir}
             onClickAdd={handleToogleForm}
             onClickSortApp={handleSortApp}
-            isShowFormApp = {isShowForm}
             onClickGoApp = {handleSearchApp}
         />
 
