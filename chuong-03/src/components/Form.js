@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 
 function Form(props) {
     // Capture props in a closure
-    const { onClickCancel, onClickSubmit, itemSelected } = props;
+    const { onClickCancel, onClickSubmit, itemSelected, isShowForm } = props;
 
     // States
     const [task_name, setTaskName] = useState('');
@@ -52,7 +53,12 @@ function Form(props) {
         }
     }
 
-  return (
+    // Logic Proccess
+    if (isShowForm === false) {
+        return false;
+    }
+
+    return (
         <div className="row">
             <div className="col-md-offset-7 col-md-5">
                 <form onSubmit={handleSubmitForm} className="form-inline">
@@ -90,4 +96,10 @@ function Form(props) {
     );
 }
 
-export default Form;
+const mapStateToProps = state => {
+    return {
+        isShowForm : state.isShowForm
+    }
+}
+
+export default connect(mapStateToProps, null) (Form);

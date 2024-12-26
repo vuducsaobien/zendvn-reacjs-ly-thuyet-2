@@ -97,16 +97,6 @@ function App() {
         setIsShowForm(true);
     }
 
-    // Logic Proccess
-    let eleForm = null;
-    if (isShowForm) {
-        eleForm = <Form 
-            itemSelected={itemSelected}
-            onClickSubmit={handleSubmitApp}
-            onClickCancel={closeForm}
-        />;
-    }
-
     // Logic Find search
     let itemsOrigin = [...items];
 
@@ -137,7 +127,11 @@ function App() {
             onClickGoApp = {handleSearchApp}
         />
 
-        {eleForm}
+        <Form 
+            itemSelected={itemSelected}
+            onClickSubmit={handleSubmitApp}
+            onClickCancel={closeForm}
+        />
 
         <List
             handleEdit={handleEdit}
