@@ -7,7 +7,7 @@ function ToggleForm(props) {
 
     // Cách 1
     function toggleForm(){
-        console.log('toggleForm');
+        // console.log('toggleForm');
         handleToggle(); // props handleToggle lấy từ store
     }
 

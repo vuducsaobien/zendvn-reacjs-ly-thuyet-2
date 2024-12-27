@@ -37,7 +37,7 @@ function App() {
     }
 
     function closeForm(){
-        setIsShowForm(false);
+        // setIsShowForm(false);
         setItemSelected(null);
     }
 
@@ -130,7 +130,6 @@ function App() {
         <Form 
             itemSelected={itemSelected}
             onClickSubmit={handleSubmitApp}
-            onClickCancel={closeForm}
         />
 
         <List

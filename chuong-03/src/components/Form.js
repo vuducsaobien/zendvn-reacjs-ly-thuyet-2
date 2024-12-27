@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import * as types from '../constants/ActionTypes';
 
 function Form(props) {
     // Capture props in a closure
-    const { onClickCancel, onClickSubmit, itemSelected, isShowForm } = props;
+    const { handleCloseForm, onClickSubmit, itemSelected, isShowForm } = props;
 
     // States
     const [task_name, setTaskName] = useState('');
@@ -21,7 +22,7 @@ function Form(props) {
 
     // Functions
     function handleCancel(){
-        onClickCancel();
+        handleCloseForm();
     }
 
     function handleChange(event) {
@@ -102,4 +103,12 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null) (Form);
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        handleCloseForm : () => {
+            dispatch({type: types.CLOSE_FORM})
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Form);
