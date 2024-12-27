@@ -11,38 +11,15 @@ function App() {
     // Set States
     const [items, setItems] = useState([]);
     const [isShowForm, setIsShowForm] = useState(false);
-    const [strSearchApp, setStrSearchApp] = useState('');
+    // const [strSearchApp, setStrSearchApp] = useState('');
     const [orderBy, setOrderBy] = useState('name');
     const [orderDir, setOrderDir] = useState('asc');
     const [itemSelected, setItemSelected] = useState(null);
 
-    // Life Cycle
-    useEffect(() => {
-        // Đoạn code này sẽ chạy một lần duy nhất khi component được mount
-        const storedItems = localStorage.getItem('tasks');
-        if (storedItems) {
-          setItems(JSON.parse(storedItems));
-        }
-    }, []); // Empty dependency array = chạy một lần khi component mount
-
     // Functions
-    function handleToogleForm(){
-        setIsShowForm(!isShowForm);
-        setItemSelected(null);
-    }
-
     function handleSortApp(orderBy, orderDir){
         setOrderBy(orderBy);
         setOrderDir(orderDir);
-    }
-
-    function closeForm(){
-        // setIsShowForm(false);
-        setItemSelected(null);
-    }
-
-    function handleSearchApp(inputStringFromControl){
-        setStrSearchApp(inputStringFromControl);
     }
 
     function handleDeleteApp(id){
@@ -94,7 +71,6 @@ function App() {
 
     function handleEdit(item){
         setItemSelected(item);
-        // setIsShowForm(true);
     }
 
   return (
@@ -105,9 +81,7 @@ function App() {
         <Control 
             orderBy={orderBy}
             orderDir={orderDir}
-            onClickAdd={handleToogleForm}
             onClickSortApp={handleSortApp}
-            onClickGoApp = {handleSearchApp}
         />
 
         <Form 
@@ -116,6 +90,7 @@ function App() {
         />
 
         <List
+            handleEdit={handleEdit}
             onClickDeleteApp={handleDeleteApp}
         />
     </div>

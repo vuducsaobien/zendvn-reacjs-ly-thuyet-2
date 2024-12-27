@@ -4,12 +4,12 @@ import ToggleForm from "./ToggleForm";
 
 function Control(props) {
     // Capture props in a closure
-    const { onClickAdd, onClickGoApp, orderDir, orderBy, onClickSortApp } = props;
+    const { orderDir, orderBy, onClickSortApp } = props;
 
     return (
         <div className="row">
             {/* SEARCH : START */}
-            <Search onClickGoControl={onClickGoApp}/>
+            <Search />
 
             {/* SORT : START */}
             <Sort 

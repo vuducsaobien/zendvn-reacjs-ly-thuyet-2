@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 import * as types from '../constants/ActionTypes';
 
-const defaultState = 'cod';
+const defaultState = '';
 
 const search = createReducer(defaultState, (builder) => {
     builder

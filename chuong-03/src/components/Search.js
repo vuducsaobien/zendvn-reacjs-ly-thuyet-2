@@ -5,7 +5,7 @@ import * as types from '../constants/ActionTypes';
 function Search(props) {
     
     // Props
-    const { goSearch, clearSearch, search } = props;
+    const { goSearch, search } = props;
 
     // States
     const [strSearchSearch, setStrSearchSearch] = useState('');
@@ -17,7 +17,7 @@ function Search(props) {
 
     function handleClear(){
         setStrSearchSearch(''); // clear state: strSearchSearch
-        clearSearch();
+        goSearch('');
     }
 
     function handleChange(event){
@@ -63,9 +63,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         goSearch : (search) => {
             dispatch({type: types.CHANGE_SEARCH, search: search})
-        },
-        clearSearch : () => {
-            dispatch({type: types.CHANGE_SEARCH, search: ''})
         }
     }
 }
