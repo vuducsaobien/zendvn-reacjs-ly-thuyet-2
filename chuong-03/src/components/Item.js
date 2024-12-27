@@ -1,19 +1,18 @@
+import { connect } from 'react-redux';
+import * as types from '../constants/ActionTypes';
 import { getLevel } from "../helpers/level";
 
 function item(props) {
-    const { index, name, level, id, onClickDeleteList, handleEdit } = props;
+    const { index, name, level, id, onClickDeleteList, handleOpenForm } = props;
 
     // Functions
     function handleDeleteItem(id){
-        // console.log(id)
         onClickDeleteList(id)
     }
 
     function handleEditItem(item){
-        // onClickDeleteList(id)
-        // console.log(item);
-        // console.log('handleEditItem');
-        handleEdit(item);
+        // handleEditState(item);
+        handleOpenForm();
     }
 
     return (
@@ -31,4 +30,14 @@ function item(props) {
     );
 }
 
-export default item;
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        handleOpenForm : () => {
+            dispatch({type: types.OPEN_FORM})
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps) (item);
+
+// export default item;

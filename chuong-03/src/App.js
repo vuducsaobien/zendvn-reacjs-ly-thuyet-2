@@ -94,7 +94,7 @@ function App() {
 
     function handleEdit(item){
         setItemSelected(item);
-        setIsShowForm(true);
+        // setIsShowForm(true);
     }
 
     // Logic Find search
@@ -133,7 +133,6 @@ function App() {
         />
 
         <List
-            handleEdit={handleEdit}
             onClickDeleteApp={handleDeleteApp}
         />
     </div>

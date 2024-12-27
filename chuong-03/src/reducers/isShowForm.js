@@ -3,7 +3,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import * as types from '../constants/ActionTypes';
 
 // State isShowForm của app.js
-const defaultState = true;
+const defaultState = false;
 
 const isShowForm = createReducer(defaultState, (builder) => {
     builder

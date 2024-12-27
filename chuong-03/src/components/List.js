@@ -2,9 +2,7 @@ import Item from "./Item";
 import { connect } from 'react-redux';
 
 function List(props) {
-
-    const { items, onClickDeleteApp, handleEdit } = props;
-    // console.log('taskList', tasksList);
+    const { items, onClickDeleteApp } = props;
 
     let eleItem = <tr><th colSpan={4}>Khong co du lieu</th></tr>;
     if (items.length > 0) {
@@ -12,7 +10,6 @@ function List(props) {
             return (
                 <Item 
                     onClickDeleteList={onClickDeleteApp} 
-                    handleEdit={handleEdit}
                     key={index} index={index} name={item.name} 
                     level={item.level} id={item.id}
                 />
