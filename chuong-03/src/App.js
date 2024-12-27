@@ -97,23 +97,6 @@ function App() {
         // setIsShowForm(true);
     }
 
-    // Logic Find search
-    let itemsOrigin = [...items];
-
-    let itemsResult = [];
-    const search = strSearchApp;
-    if (search.length > 0) {
-        itemsResult = filterDash(itemsOrigin, (item) => {
-            return includes(item.name.toLowerCase(), search.toLowerCase());
-        });
-
-    } else {
-        itemsResult = itemsOrigin;
-    }
-
-    // Sort
-    itemsResult = orderByDash(itemsResult, [orderBy], [orderDir]);
-
   return (
     <div>
         <Title />

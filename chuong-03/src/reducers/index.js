@@ -3,11 +3,13 @@ import { combineReducers } from '@reduxjs/toolkit';
 import isShowForm from './isShowForm';
 import sort from './sort';
 import items from './items';
+import search from './search';
 
 const appReducer = combineReducers({
     isShowForm,
     sort,
-    items
+    items,
+    search
 });
 
 export default appReducer;

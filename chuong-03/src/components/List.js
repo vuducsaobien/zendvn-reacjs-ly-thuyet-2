@@ -1,12 +1,33 @@
 import Item from "./Item";
 import { connect } from 'react-redux';
+import {filter as filterDash, includes} from 'lodash';
+
 
 function List(props) {
-    const { items, onClickDeleteApp } = props;
+    const { items, onClickDeleteApp, search } = props;
+
+    console.log('search', search);
+
+    // Logic Find search
+    let itemsOrigin = [...items];
+
+    let itemsResult = [];
+    // const search = strSearchApp;
+    if (search.length > 0) {
+        itemsResult = filterDash(itemsOrigin, (item) => {
+            return includes(item.name.toLowerCase(), search.toLowerCase());
+        });
+
+    } else {
+        itemsResult = itemsOrigin;
+    }
+
+    // // Sort
+    // itemsResult = orderByDash(itemsResult, [orderBy], [orderDir]);
 
     let eleItem = <tr><th colSpan={4}>Khong co du lieu</th></tr>;
     if (items.length > 0) {
-        eleItem = items.map((item, index) => {
+        eleItem = itemsResult.map((item, index) => {
             return (
                 <Item 
                     onClickDeleteList={onClickDeleteApp} 
@@ -43,7 +64,8 @@ function List(props) {
 
 const mapStateToProps = state => {
     return {
-        items : state.items
+        items : state.items,
+        search : state.search
     }
 }
 
