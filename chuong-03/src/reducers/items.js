@@ -2,7 +2,12 @@ import { createReducer } from '@reduxjs/toolkit';
 // import { SORT_FORM } from '../actions';
 
 // Các State của app.js
-let defaultState = [];
+let defaultState = [
+    {id: 'A1', name: 'Coding 1', level: 0},
+    {id: 'A2', name: 'Coding 11', level: 0},
+    {id: 'A3', name: 'Coding 2', level: 0},
+    {id: 'A4', name: 'Football', level: 0},
+];
 
 const storedItems = localStorage.getItem('tasks');
 if (storedItems) {

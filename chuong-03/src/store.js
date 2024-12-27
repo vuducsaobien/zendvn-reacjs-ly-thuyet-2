@@ -10,7 +10,7 @@ const store = configureStore({
 // console.log('init - orderBy', store.getState()); // Init ; orderBy = name & orderDir = desc
 
 store.subscribe(() => {
-    console.log('subscribe');
+    // console.log('subscribe');
 });
 
 // store.dispatch(TOOGLE_FORM()); // Goi store.subscribe

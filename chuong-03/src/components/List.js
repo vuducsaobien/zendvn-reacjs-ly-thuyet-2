@@ -6,18 +6,14 @@ import {filter as filterDash, includes} from 'lodash';
 function List(props) {
     const { items, onClickDeleteApp, search } = props;
 
-    console.log('search', search);
-
     // Logic Find search
     let itemsOrigin = [...items];
-
     let itemsResult = [];
-    // const search = strSearchApp;
+
     if (search.length > 0) {
         itemsResult = filterDash(itemsOrigin, (item) => {
             return includes(item.name.toLowerCase(), search.toLowerCase());
         });
-
     } else {
         itemsResult = itemsOrigin;
     }
@@ -38,7 +34,7 @@ function List(props) {
         });    
     }
 
-  return (
+    return (
         <div className="panel panel-success">
             <div className="panel-heading">List Task</div>
             <table className="table table-hover ">

@@ -1,46 +1,41 @@
-// import { getLevel } from "../helpers/level";
-import { useState
-    // , useRef 
-} from 'react';
-
+import { useState } from 'react';
+import { connect } from 'react-redux';
+import * as types from '../constants/ActionTypes';
 
 function Search(props) {
-    const { onClickGoControl } = props;
-
-    // Create a ref for the username input
-    // const searchRef = useRef(null);
+    
+    // Props
+    const { goSearch, clearSearch, search } = props;
 
     // States
     const [strSearchSearch, setStrSearchSearch] = useState('');
-    
 
-    // function handleSearch(search){
+    // Functions
     function handleSearch(){
-        // console.log('handleSearch');
-        // console.log(strSearchSearch);
-        onClickGoControl(strSearchSearch);
+        goSearch(strSearchSearch);
     }
 
     function handleClear(){
         setStrSearchSearch(''); // clear state: strSearchSearch
-        onClickGoControl(''); // clear state: strSearchApp
+        clearSearch();
     }
 
     function handleChange(event){
         setStrSearchSearch(event.target.value);
     }
 
+    // Logic
+    let strSearch = (search !== '') ? search : strSearchSearch;
+
+    // Render
     return (
         <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
             <div className="input-group">
                 <input
                     type="text"
                     className="form-control"
-                    // ref="search"
-                    // ref={searchRef}
                     placeholder="Search for..."
-                    value={strSearchSearch}
-                    // onChange={(e) => setStrSearchSearch(e.target.value)} // cach 1
+                    value={strSearch}
                     onChange={handleChange} // cach 2
                 />
                 <span className="input-group-btn">
@@ -58,4 +53,21 @@ function Search(props) {
     );
 }
 
-export default Search;
+const mapStateToProps = state => {
+    return {
+        search : state.search
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        goSearch : (search) => {
+            dispatch({type: types.CHANGE_SEARCH, search: search})
+        },
+        clearSearch : () => {
+            dispatch({type: types.CHANGE_SEARCH, search: ''})
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Search);

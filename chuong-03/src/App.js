@@ -4,7 +4,7 @@ import Control from "./components/Control";
 import Form from "./components/Form";
 import List from "./components/List";
 import Title from "./components/Title";
-import {filter as filterDash, includes, orderBy as orderByDash, remove as removeDash} from 'lodash';
+import { remove as removeDash} from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
 
 function App() {
