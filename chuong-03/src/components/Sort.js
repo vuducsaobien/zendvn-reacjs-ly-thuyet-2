@@ -1,13 +1,13 @@
-// import { getLevel } from "../helpers/level";
-
+import { connect } from 'react-redux';
+// import * as types from '../constants/ActionTypes';
+import { SORT_FORM } from '../actions';
 
 function Sort(props) {
-    const { orderBy, orderDir, onClickSortControl } = props;
-    let strSort = `${orderBy} ${orderDir}`;
+    const { sort, handleSort } = props;
+    let strSort = `${sort.orderBy} - ${sort.orderDir}`;
 
     function handleSortSort(orderBy, orderDir) {
-        // console.log('handleSort - Sort ' + orderBy + '-' + orderDir);
-        onClickSortControl(orderBy, orderDir);
+        handleSort(orderBy, orderDir);
     }
 
     return (
@@ -44,4 +44,19 @@ function Sort(props) {
     );
 }
 
-export default Sort;
+const mapStateToProps = state => {
+    return {
+        sort : state.sort
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        handleSort : (orderBy, orderDir) => {
+            dispatch(SORT_FORM({ orderBy, orderDir })); // Gọi action creator để tạo action object
+        }
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps) (Sort);

@@ -12,16 +12,11 @@ function App() {
     const [items, setItems] = useState([]);
     const [isShowForm, setIsShowForm] = useState(false);
     // const [strSearchApp, setStrSearchApp] = useState('');
-    const [orderBy, setOrderBy] = useState('name');
-    const [orderDir, setOrderDir] = useState('asc');
+    // const [orderBy, setOrderBy] = useState('name');
+    // const [orderDir, setOrderDir] = useState('asc');
     const [itemSelected, setItemSelected] = useState(null);
 
     // Functions
-    function handleSortApp(orderBy, orderDir){
-        setOrderBy(orderBy);
-        setOrderDir(orderDir);
-    }
-
     function handleDeleteApp(id){
         let itemsRemove = removeDash(items, (item) => {
             return item.id !== id
@@ -79,9 +74,6 @@ function App() {
 
         {/* CONTROL (SEARCH + SORT + ADD) : START */}
         <Control 
-            orderBy={orderBy}
-            orderDir={orderDir}
-            onClickSortApp={handleSortApp}
         />
 
         <Form 

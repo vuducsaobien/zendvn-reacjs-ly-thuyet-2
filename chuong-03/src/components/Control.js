@@ -4,7 +4,7 @@ import ToggleForm from "./ToggleForm";
 
 function Control(props) {
     // Capture props in a closure
-    const { orderDir, orderBy, onClickSortApp } = props;
+    // const {  } = props;
 
     return (
         <div className="row">
@@ -13,9 +13,6 @@ function Control(props) {
 
             {/* SORT : START */}
             <Sort 
-                orderBy={orderBy}
-                orderDir={orderDir}
-                onClickSortControl = {onClickSortApp}
             />
             
             {/* ADD : START */}
