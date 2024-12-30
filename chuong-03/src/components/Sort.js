@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-// import * as types from '../constants/ActionTypes';
 import { SORT_FORM } from '../actions';
 
 function Sort(props) {

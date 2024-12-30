@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import * as types from '../constants/ActionTypes';
 import { getLevel } from "../helpers/level";
+import { OPEN_FORM } from '../actions';
 
 function item(props) {
     const { index, name, level, id, onClickDeleteList, handleOpenForm } = props;
@@ -33,7 +33,7 @@ function item(props) {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         handleOpenForm : () => {
-            dispatch({type: types.OPEN_FORM})
+            dispatch(OPEN_FORM())
         }
     }
 }

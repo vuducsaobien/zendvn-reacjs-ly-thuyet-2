@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import * as types from '../constants/ActionTypes';
+import { CHANGE_SEARCH } from '../actions';
 
 function Search(props) {
     
@@ -62,7 +62,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         goSearch : (search) => {
-            dispatch({type: types.CHANGE_SEARCH, search: search})
+            dispatch(CHANGE_SEARCH(search)); // Gọi action creator để tạo action object
         }
     }
 }

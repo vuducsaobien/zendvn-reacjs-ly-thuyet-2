@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import * as types from '../constants/ActionTypes';
+import { CLOSE_FORM } from '../actions';
 
 function Form(props) {
     // Capture props in a closure
@@ -106,7 +106,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         handleCloseForm : () => {
-            dispatch({type: types.CLOSE_FORM})
+            dispatch(CLOSE_FORM())
         }
     }
 }

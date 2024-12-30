@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import * as types from '../constants/ActionTypes';
+import { TOOGLE_FORM } from '../actions';
 
 function ToggleForm(props) {
     // Capture props in a closure
@@ -7,7 +7,6 @@ function ToggleForm(props) {
 
     // Cách 1
     function toggleForm(){
-        // console.log('toggleForm');
         handleToggle(); // props handleToggle lấy từ store
     }
 
@@ -34,7 +33,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         handleToggle : () => {
-            dispatch({type: types.TOOGLE_FORM})
+            dispatch(TOOGLE_FORM())
         }
     }
 }

@@ -1,17 +1,14 @@
 import { createReducer } from '@reduxjs/toolkit';
-import * as types from '../constants/ActionTypes';
+import { CHANGE_SEARCH } from '../actions';
 
 const defaultState = '';
 
 const search = createReducer(defaultState, (builder) => {
     builder
-        // .addCase(types.CHANGE_SEARCH, (state, action) => state)
-
-        .addCase(types.CHANGE_SEARCH, (state, action) => {
-            // console.log('action ---- ', action);
-            return action.search; // Cập nhật state từ payload của action
+        .addCase(CHANGE_SEARCH, (state, action) => {
+            return action.payload; // Cập nhật state từ payload của action
         })
-        ;
+    ;
 });
 
 export default search;
