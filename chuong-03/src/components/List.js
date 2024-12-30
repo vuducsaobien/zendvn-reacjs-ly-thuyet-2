@@ -1,10 +1,10 @@
 import Item from "./Item";
 import { connect } from 'react-redux';
-import {filter as filterDash, includes} from 'lodash';
+import {filter as filterDash, includes, orderBy as orderByDash} from 'lodash';
 
 
 function List(props) {
-    const { items, onClickDeleteApp, search } = props;
+    const { items, onClickDeleteApp, search, sort } = props;
 
     // Logic Find search
     let itemsOrigin = [...items];
@@ -18,8 +18,11 @@ function List(props) {
         itemsResult = itemsOrigin;
     }
 
-    // // Sort
-    // itemsResult = orderByDash(itemsResult, [orderBy], [orderDir]);
+    // console.log('sort', sort);
+
+    // Sort
+    let {orderBy, orderDir} = sort;
+    itemsResult = orderByDash(itemsResult, [orderBy], [orderDir]);
 
     let eleItem = <tr><th colSpan={4}>Khong co du lieu</th></tr>;
     if (items.length > 0) {
@@ -61,7 +64,8 @@ function List(props) {
 const mapStateToProps = state => {
     return {
         items : state.items,
-        search : state.search
+        search : state.search,
+        sort : state.sort,
     }
 }
 

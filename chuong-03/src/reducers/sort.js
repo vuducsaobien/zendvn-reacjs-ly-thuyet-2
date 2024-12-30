@@ -2,7 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { SORT_FORM } from '../actions';
 
 // Các State của app.js
-const defaultState = {orderBy: 'name', orderDir: 'desc'};
+const defaultState = {orderBy: 'level', orderDir: 'asc'};
 
 const sort = createReducer(defaultState, (builder) => {
     builder
