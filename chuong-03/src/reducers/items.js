@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { DELETE_ITEM } from '../actions';
-import { remove as removeDash} from 'lodash';
+import { ADD_ITEM, DELETE_ITEM } from '../actions';
 import * as Config from '../constants/Config';
+import { v4 as uuidv4 } from 'uuid';
 
 // Các State của app.js
 let defaultState = [];
@@ -22,6 +22,22 @@ const items = createReducer(defaultState, (builder) => {
             localStorage.setItem(Config.ITEMS_FROM_LOCAL_STOGARE, JSON.stringify(itemsRemove));
             return itemsRemove; // câp nhật lại state items trong stogare
         })
+        .addCase(ADD_ITEM, (state, action) => {
+
+            // let newItems = [...items, {
+            let item = action.payload;
+
+            // console.log('item', item);
+            let items = [...state, {
+                id: uuidv4(),
+                name: item.name,
+                level: +item.level
+            }];
+
+            localStorage.setItem(Config.ITEMS_FROM_LOCAL_STOGARE, JSON.stringify(items));
+            return items;
+        })
+
 });
 
 export default items;

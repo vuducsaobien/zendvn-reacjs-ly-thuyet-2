@@ -5,7 +5,6 @@ import Form from "./components/Form";
 import List from "./components/List";
 import Title from "./components/Title";
 import { remove as removeDash} from 'lodash';
-import { v4 as uuidv4 } from 'uuid';
 import * as Config from './constants/Config';
 
 function App() {
@@ -19,17 +18,6 @@ function App() {
 
     // Functions
 
-    function handleAddItem(item) {
-        let newItems = [...items, {
-            id: uuidv4(),
-            name: item.name,
-            level: +item.level
-        }];
-        setItems(newItems);
-        setIsShowForm(false);
-
-        localStorage.setItem(Config.ITEMS_FROM_LOCAL_STOGARE, JSON.stringify(newItems));
-    }
 
     function handleEditItem(item) {
         // Tạo mảng mới và cập nhật item được chỉnh sửa
@@ -49,13 +37,13 @@ function App() {
         localStorage.setItem(Config.ITEMS_FROM_LOCAL_STOGARE, JSON.stringify(newItems));
     }
 
-    function handleSubmitApp(item){
-        if (item.type === 'add') {
-            handleAddItem(item);
-        } else if (item.type === 'edit') {
-            handleEditItem(item);
-        }
-    }
+    // function handleSubmitApp(item){
+    //     if (item.type === 'add') {
+    //         handleAddItem(item);
+    //     } else if (item.type === 'edit') {
+    //         handleEditItem(item);
+    //     }
+    // }
 
     function handleEdit(item){
         setItemSelected(item);
@@ -71,7 +59,6 @@ function App() {
 
         <Form 
             itemSelected={itemSelected}
-            onClickSubmit={handleSubmitApp}
         />
 
         <List

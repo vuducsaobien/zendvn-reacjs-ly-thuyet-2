@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { CLOSE_FORM } from '../actions';
+import { ADD_ITEM, CLOSE_FORM } from '../actions';
 
 function Form(props) {
     // Capture props in a closure
-    const { handleCloseForm, onClickSubmit, itemSelected, isShowForm } = props;
+    const { handleCloseForm, itemSelected, isShowForm, handleAddItemStorage } = props;
 
     // States
     const [task_name, setTaskName] = useState('');
@@ -38,21 +38,40 @@ function Form(props) {
         if (actionForm === 'add') {
             let item = {
                 name : task_name,
-                level : task_level,
-                type : 'add'
+                level : task_level
             };
-            onClickSubmit(item);
+            handleAddItem(item);
     
         } else if (actionForm === 'edit') {
-            let item = {
-                id : itemSelected.id,
-                name : task_name,
-                level : task_level,
-                type : 'edit',
-            };
-            onClickSubmit(item);
+            // let item = {
+            //     id : itemSelected.id,
+            //     name : task_name,
+            //     level : task_level,
+            //     type : 'edit',
+            // };
+            // onClickSubmit(item);
         }
     }
+
+    function handleAddItem(item) {
+        // let newItems = [...items, {
+        //     id: uuidv4(),
+        //     name: item.name,
+        //     level: +item.level
+        // }];
+        // setItems(newItems);
+        // setIsShowForm(false);
+
+        handleAddItemStorage(item);
+        handleCloseForm();
+        // handleItemSelected();
+
+        // localStorage.setItem(Config.ITEMS_FROM_LOCAL_STOGARE, JSON.stringify(newItems));
+    }
+
+    // function handleEdit(item){
+    //     setItemSelected(item);
+    // }
 
     // Logic Proccess
     if (isShowForm === false) {
@@ -107,6 +126,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         handleCloseForm : () => {
             dispatch(CLOSE_FORM())
+        },
+        handleAddItemStorage : (item) => {
+            dispatch(ADD_ITEM(item))
         }
     }
 }
