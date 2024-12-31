@@ -4,7 +4,7 @@ import {filter as filterDash, includes, orderBy as orderByDash} from 'lodash';
 
 
 function List(props) {
-    const { items, onClickDeleteApp, search, sort } = props;
+    const { items, search, sort } = props;
 
     // Logic Find search
     let itemsOrigin = [...items];
@@ -18,8 +18,6 @@ function List(props) {
         itemsResult = itemsOrigin;
     }
 
-    // console.log('sort', sort);
-
     // Sort
     let {orderBy, orderDir} = sort;
     itemsResult = orderByDash(itemsResult, [orderBy], [orderDir]);
@@ -29,7 +27,6 @@ function List(props) {
         eleItem = itemsResult.map((item, index) => {
             return (
                 <Item 
-                    onClickDeleteList={onClickDeleteApp} 
                     key={index} index={index} name={item.name} 
                     level={item.level} id={item.id}
                 />

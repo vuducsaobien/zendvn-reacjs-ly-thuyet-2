@@ -69,3 +69,5 @@ npm install @reduxjs/toolkit react-redux
 Tách từng file ra nhỏ hơn nữa, mỗi file để quản lý 1 state thôi
 
 Sử dụng được Redux devtool của Chrome thì phải install package react-redux
+
+Muốn add items => F12 => Application tab => local storage => delete key tasks

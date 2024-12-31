@@ -6,6 +6,7 @@ import List from "./components/List";
 import Title from "./components/Title";
 import { remove as removeDash} from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
+import * as Config from './constants/Config';
 
 function App() {
     // Set States
@@ -17,14 +18,6 @@ function App() {
     const [itemSelected, setItemSelected] = useState(null);
 
     // Functions
-    function handleDeleteApp(id){
-        let itemsRemove = removeDash(items, (item) => {
-            return item.id !== id
-        });
-        setItems(itemsRemove);
-
-        localStorage.setItem('tasks', JSON.stringify(itemsRemove));
-    }
 
     function handleAddItem(item) {
         let newItems = [...items, {
@@ -35,7 +28,7 @@ function App() {
         setItems(newItems);
         setIsShowForm(false);
 
-        localStorage.setItem('tasks', JSON.stringify(newItems));
+        localStorage.setItem(Config.ITEMS_FROM_LOCAL_STOGARE, JSON.stringify(newItems));
     }
 
     function handleEditItem(item) {
@@ -53,7 +46,7 @@ function App() {
         setItems(newItems);
         setIsShowForm(false);
 
-        localStorage.setItem('tasks', JSON.stringify(newItems));
+        localStorage.setItem(Config.ITEMS_FROM_LOCAL_STOGARE, JSON.stringify(newItems));
     }
 
     function handleSubmitApp(item){
@@ -83,7 +76,6 @@ function App() {
 
         <List
             handleEdit={handleEdit}
-            onClickDeleteApp={handleDeleteApp}
         />
     </div>
   );
