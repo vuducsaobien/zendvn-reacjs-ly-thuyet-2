@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import Control from "./components/Control";
 import Form from "./components/Form";
 import List from "./components/List";
 import Title from "./components/Title";
-import { remove as removeDash} from 'lodash';
 import * as Config from './constants/Config';
 
 function App() {
@@ -58,7 +57,6 @@ function App() {
         />
 
         <Form 
-            itemSelected={itemSelected}
         />
 
         <List

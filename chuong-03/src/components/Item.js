@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { getLevel } from "../helpers/level";
-import { DELETE_ITEM, OPEN_FORM } from '../actions';
+import { DELETE_ITEM, OPEN_FORM, SET_ITEM_SELECTED } from '../actions';
 
 function item(props) {
     const { index, name, level, id, handleOpenForm, handleDeleteItemStore } = props;
@@ -11,8 +11,7 @@ function item(props) {
     }
 
     function handleEditItem(item){
-        // handleEditState(item);
-        handleOpenForm();
+        handleOpenForm({ id: item.id, name: item.name, level: item.level });
     }
 
     return (
@@ -32,8 +31,9 @@ function item(props) {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        handleOpenForm : () => {
+        handleOpenForm : (item) => {
             dispatch(OPEN_FORM())
+            dispatch(SET_ITEM_SELECTED(item))
         },
         handleDeleteItemStore : (id) => {
             dispatch(DELETE_ITEM({id}))
@@ -42,5 +42,3 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 export default connect(null, mapDispatchToProps) (item);
-
-// export default item;

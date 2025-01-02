@@ -4,7 +4,7 @@ import { ADD_ITEM, CLOSE_FORM } from '../actions';
 
 function Form(props) {
     // Capture props in a closure
-    const { handleCloseForm, itemSelected, isShowForm, handleAddItemStorage } = props;
+    const { handleCloseForm, itemSelected, isShowForm, handleAddItemStorage, handleItemSelected } = props;
 
     // States
     const [task_name, setTaskName] = useState('');
@@ -16,7 +16,9 @@ function Form(props) {
         if (itemSelected) {
             setTaskName(itemSelected.name);
             setTaskLevel(itemSelected.level);
-            setActionForm('edit');
+            if (itemSelected.id) { // Edit
+                setActionForm('edit');
+            }
         }
     }, [itemSelected]);
 
@@ -30,7 +32,6 @@ function Form(props) {
         if (name === 'task_name') setTaskName(value);
         if (name === 'task_level') setTaskLevel(value);
     }
-    // console.log(itemSelected);
 
     function handleSubmitForm(event) {
         event.preventDefault();
@@ -54,20 +55,13 @@ function Form(props) {
     }
 
     function handleAddItem(item) {
-        // let newItems = [...items, {
-        //     id: uuidv4(),
-        //     name: item.name,
-        //     level: +item.level
-        // }];
-        // setItems(newItems);
-        // setIsShowForm(false);
-
         handleAddItemStorage(item);
-        handleCloseForm();
-        // handleItemSelected();
-
-        // localStorage.setItem(Config.ITEMS_FROM_LOCAL_STOGARE, JSON.stringify(newItems));
+        handleItemSelected();
     }
+
+    // function handleEdit(item){
+    //     setItemSelected(item);
+    // }
 
     // function handleEdit(item){
     //     setItemSelected(item);
@@ -118,7 +112,8 @@ function Form(props) {
 
 const mapStateToProps = state => {
     return {
-        isShowForm : state.isShowForm
+        isShowForm : state.isShowForm,
+        itemSelected : state.itemSelected,
     }
 }
 
@@ -129,6 +124,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         handleAddItemStorage : (item) => {
             dispatch(ADD_ITEM(item))
+        },
+        handleItemSelected : () => {
+            dispatch(CLOSE_FORM())
         }
     }
 }

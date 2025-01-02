@@ -8,6 +8,5 @@ export const SORT_FORM = createAction('app/' + types.SORT_FORM);
 export const CHANGE_SEARCH = createAction('app/' + types.CHANGE_SEARCH);
 export const DELETE_ITEM = createAction('app/' + types.DELETE_ITEM);
 export const ADD_ITEM = createAction('app/' + types.ADD_ITEM);
-
-
+export const SET_ITEM_SELECTED = createAction('app/' + types.SET_ITEM_SELECTED);
 
