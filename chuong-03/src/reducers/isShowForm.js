@@ -1,14 +1,22 @@
-import { createReducer } from '@reduxjs/toolkit';
-import { CLOSE_FORM, OPEN_FORM, TOOGLE_FORM } from '../actions';
+import * as types from './../constants/ActionTypes.js';
 
 // State isShowForm của app.js
 const defaultState = false;
 
-const isShowForm = createReducer(defaultState, (builder) => {
-    builder
-        .addCase(CLOSE_FORM, () => false) // Trả về giá trị boolean
-        .addCase(OPEN_FORM, () => true)  // Trả về giá trị boolean
-        .addCase(TOOGLE_FORM, (state) => !state); // Đảo ngược giá trị boolean
-});
+const isShowForm = (state = defaultState, action) => {
+	switch(action.type){
+		case types.CLOSE_FORM:
+			return false;
+
+		case types.OPEN_FORM:
+			return true;
+
+		case types.TOGGLE_FORM:
+			return !state;
+
+		default:
+			return state;
+	}
+}
 
 export default isShowForm;

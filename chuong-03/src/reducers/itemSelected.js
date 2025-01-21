@@ -1,14 +1,20 @@
-import { createReducer } from '@reduxjs/toolkit';
-import { SET_ITEM_SELECTED } from '../actions';
+import * as types from './../constants/ActionTypes';
 
 // Các State của app.js
 let defaultState = { id: '', name:'', level:0 };
 
-const itemSelected = createReducer(defaultState, (builder) => {
-    builder
-        .addCase(SET_ITEM_SELECTED, (state, action) => {
-            return action.payload;
-        })
-});
+const itemSelected = (state = defaultState, action) => {
+
+	switch(action.type){
+		case types.SELECTED_ITEM:
+			return action.item;
+
+		// case types.UNSELECT_ITEM:
+		// 	return {id: '', name: '', level: 0};
+
+		default:
+			return state;
+	}
+}
 
 export default itemSelected;

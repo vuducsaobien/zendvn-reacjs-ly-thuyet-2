@@ -1,15 +1,14 @@
-import { createReducer } from '@reduxjs/toolkit';
-import { SORT_FORM } from '../actions';
+import * as types from './../constants/ActionTypes';
+const defaultState = {orderBy: 'level', orderDir: 'desc'} ;
 
-// Các State của app.js
-const defaultState = {orderBy: 'level', orderDir: 'asc'};
-
-const sort = createReducer(defaultState, (builder) => {
-    builder
-        .addCase(SORT_FORM, (state, action) => {
-            state.orderBy = action.payload.orderBy;
-            state.orderDir = action.payload.orderDir;
-        });
-});
+const sort = (state = defaultState, action) => {
+	let {orderBy, orderDir} = action;
+	switch(action.type){
+		case types.SORT_FORM:
+			return {orderBy, orderDir};
+		default:
+			return state;
+	}
+}
 
 export default sort;
